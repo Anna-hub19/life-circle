@@ -8,7 +8,7 @@ export class ListaDeCompraService {
 
   private listaDeCompra: Item[];
 
-  constructor() {
+  constructor( ) {
     this.listaDeCompra = JSON.parse(localStorage.getItem('itens')|| '[]');
   }
 

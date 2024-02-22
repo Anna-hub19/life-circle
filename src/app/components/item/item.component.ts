@@ -11,6 +11,7 @@ import { Item } from 'src/app/interfaces/iItem';
 export class ItemComponent implements OnInit, OnChanges {
   @Input() item! : Item
   @Output() emitindoItemParaEditar = new EventEmitter();
+  @Output() emitindoIdParaDeletar = new EventEmitter();
   faPen = faPen;
   faTrash = faTrash
 
@@ -23,7 +24,23 @@ export class ItemComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
 
   }
+  ngOnDestroy(){
+    console.log('Conseguiram me calar.')
+  }
+
   editarItem(){
     this.emitindoItemParaEditar.emit(this.item);
   }
+  checarItem() {
+    if(this.item.comprado == true){
+      this.item.comprado = false;
+    }else{
+      this.item.comprado = true;
+    }
+  }
+  deletarItem(){
+    console.log('Estão tentando me calar.')
+    this.emitindoIdParaDeletar.emit(this.item.id);
+  }
+
 }
